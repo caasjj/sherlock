@@ -1,0 +1,46 @@
+{
+  "name": "sherlock",
+  "version": "0.0.1",
+  "description": "A Redis based lock",
+  "main": "index.js",
+  "scripts": {
+    "redis": "redis-server ./db/redis.conf &",
+    "compile-and-test": "npm run compile-test && ./node_modules/mocha/bin/mocha",
+    "test": "./node_modules/mocha/bin/mocha",
+    "compile": "node_modules/.bin/babel src --modules common --out-dir lib  --source-maps true",
+    "compile-example": "node_modules/.bin/babel example --modules common --out-dir lib  --source-maps true",
+    "watch": "node_modules/.bin/babel src --watch --modules common --out-dir lib --source-maps true",
+    "prepublish": "npm run compile && npm prune",
+    "compile-test": "node_modules/.bin/babel test --ignore test/es5 --modules common --out-dir test/es5  --source-maps true"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/caasjj/sherlock.git"
+  },
+  "keywords": [
+    "lock",
+    "redis",
+    "distributed"
+  ],
+  "author": "Walid Hosseini <caasjj@gmail.com> (http://walidhosseini.com)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/caasjj/sherlock/issues"
+  },
+  "homepage": "https://github.com/caasjj/sherlock#readme",
+  "dependencies": {
+    "bluebird": "^2.10.2",
+    "hiredis": "^0.4.1",
+    "lewis": "git+https://github.com/caasjj/lewis.git",
+    "lodash": "^3.10.1",
+    "node-uuid": "^1.4.3",
+    "redis": "^2.2.3"
+  },
+  "devDependencies": {
+    "babel": "^5.8.23",
+    "chai": "^3.3.0",
+    "chai-as-promised": "^5.1.0",
+    "mocha": "^2.3.3",
+    "proxy": "git+https://github.com/caasjj/proxy.git"
+  }
+}
